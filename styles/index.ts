@@ -26,7 +26,8 @@ export const splashStyles = StyleSheet.create({
 
 export const globalStyles = StyleSheet.create({
     main: {
-        backgroundColor: "#fafafa"
+        backgroundColor: "#fffffc",
+        flex: 1
     }
 })
 

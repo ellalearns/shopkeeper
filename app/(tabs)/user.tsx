@@ -1,11 +1,11 @@
-import { globalStyles } from "@/styles";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 
-export default function Home () {
+export default function User () {
     return (
         <SafeAreaProvider>
-            <SafeAreaView style={globalStyles.main}></SafeAreaView>
+            <SafeAreaView></SafeAreaView>
         </SafeAreaProvider>
     )
 }
+
