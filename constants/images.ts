@@ -8,5 +8,7 @@ export const images = {
     user: require("../assets/images/user.png"),
     activeUser: require("../assets/images/activeUser.png"),
     category: require("../assets/images/category.png"),
-    activeCategory: require("../assets/images/activeCategory.png")
+    activeCategory: require("../assets/images/activeCategory.png"),
+    search: require("../assets/images/search.png"),
+    bag: require("../assets/images/bag.png")
 }

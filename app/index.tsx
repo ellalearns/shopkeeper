@@ -20,7 +20,7 @@ export default function Index() {
       }
 
       if (!fontsLoaded) return null
-    }, 4000)
+    }, 3000)
   }, [fontsLoaded])
 
   return (

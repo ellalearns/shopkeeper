@@ -11,7 +11,7 @@ const TabIcon = ({ focused, activeIcon, icon }: any) => {
             alignSelf: "center",
             height: "120%",
             borderRadius: 40
-        }, focused && {backgroundColor: "#dfc87c"}]}>
+        }, focused && {backgroundColor: "#dfc87c", elevation: 5, zIndex: 5}]}>
             <Image source={focused ? activeIcon : icon} style={focused ? null : null} />
         </View>
     )
