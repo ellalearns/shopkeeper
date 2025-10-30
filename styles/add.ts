@@ -51,5 +51,9 @@ export const addStyles = StyleSheet.create({
         fontFamily: fonts.bold,
         fontSize: 24,
         color: "#fffffc"
+    },
+
+    disabled: {
+        opacity: 0.5
     }
 })

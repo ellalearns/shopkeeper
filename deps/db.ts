@@ -1,4 +1,5 @@
 import * as SQLite from "expo-sqlite"
+import * as Crypto from "expo-crypto"
 
 const DB_NAME = "shopkeeper"
 
@@ -31,7 +32,32 @@ export const createProductTable = async () => {
 export const getAllProducts = async () => {
     const db = await getDB()
 
-    await db.getAllAsync(
+    const products = await db.getAllAsync(
         `SELECT * FROM PRODUCTS ORDER BY created_at DESC`
     )
+
+    return products
 }
+
+export const addNewProduct = async ({ ...product }) => {
+    
+    const id = Crypto.randomUUID()
+    const image = product.image ?? null
+
+    const db = await getDB()
+
+    await db.runAsync(
+        `INSERT INTO PRODUCTS (
+            id, name, price, units, description, image
+        ) VALUES (?, ?, ?, ?, ?, ?)`,
+        [
+            id,
+            product.name,
+            product.price,
+            product.units,
+            product.description,
+            image
+        ]
+    )
+}
+

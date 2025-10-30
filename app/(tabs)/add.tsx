@@ -3,10 +3,12 @@ import { images } from "@/constants/images";
 import { globalStyles } from "@/styles";
 import { addStyles } from "@/styles/add";
 import { homeStyles } from "@/styles/home";
-import { useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker"
+import { addNewProduct } from "@/deps/db";
+import { router, useFocusEffect } from "expo-router";
 
 
 export default function Add() {
@@ -16,13 +18,27 @@ export default function Add() {
     const [units, setUnits] = useState("")
     const [desc, setDesc] = useState("")
 
-    const category = "default"
-    const [ image, setImage ] = useState<any>(null)
+    const [image, setImage] = useState<any>(null)
+
+    const [canContinue, setCanContinue] = useState(true)
+
+    useEffect(() => {
+        name && price && units && desc && setCanContinue(false)
+    }, [name, price, units, desc])
+
+    useFocusEffect(useCallback(() => {
+        setName("")
+        setPrice("")
+        setUnits("")
+        setDesc("")
+        setCanContinue(true)
+        setImage(null)
+    }, []))
 
     const takePicture = async () => {
 
         const picture = await ImagePicker.launchCameraAsync({
-            mediaTypes: [ "images" ],
+            mediaTypes: ["images"],
             allowsEditing: true,
             aspect: [4, 3],
             quality: 1
@@ -31,6 +47,21 @@ export default function Add() {
         if (!picture.canceled) {
             setImage({ uri: picture.assets[0].uri })
         }
+    }
+
+    const addAProduct = async () => {
+
+        const productData = {
+            name: name,
+            units: units,
+            price: price,
+            description: desc,
+            image: image
+        }
+
+        await addNewProduct(productData)
+
+        router.replace("/home")
     }
 
     return (
@@ -44,7 +75,7 @@ export default function Add() {
                         <TouchableOpacity style={addStyles.uploadImg} onPress={takePicture}>
                             {
                                 image ? <>
-                                    <Image source={image} style={[addStyles.img]}/>
+                                    <Image source={image} style={[addStyles.img]} />
                                 </> : <>
                                     <Image source={images.bag} />
                                     <Text style={addStyles.imgT}>add a product image</Text>
@@ -64,7 +95,7 @@ export default function Add() {
                     <Input label="Product Description" desc value={desc} setValue={setDesc} />
                 </View>
                 <View>
-                    <TouchableOpacity style={addStyles.finishB}>
+                    <TouchableOpacity onPress={() => addAProduct()} disabled={canContinue} style={[addStyles.finishB, canContinue && addStyles.disabled]}>
                         <Text style={addStyles.finishT}>Add Product</Text>
                     </TouchableOpacity>
                 </View>

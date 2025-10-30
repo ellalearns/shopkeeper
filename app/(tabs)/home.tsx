@@ -3,8 +3,8 @@ import { getAllProducts } from "@/deps/db";
 import { dummyProducts } from "@/dummydata";
 import { globalStyles } from "@/styles";
 import { homeStyles } from "@/styles/home";
-import { router } from "expo-router";
-import { useEffect, useState } from "react";
+import { router, useFocusEffect } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
@@ -13,14 +13,15 @@ export default function Home() {
 
     const [products, setProducts] = useState<any>(null)
 
-    useEffect(() => {
+    useFocusEffect(useCallback(() => {
         const getProducts = async () => {
             const products = await getAllProducts()
             setProducts(products)
+            
         }
 
         getProducts()
-    }, [])
+    }, []))
 
     return (
         <SafeAreaProvider>
@@ -53,7 +54,7 @@ export default function Home() {
                                         }
                                     })}>
                                         <View style={homeStyles.nameV}>
-                                            <Image source={product.image ? product.image : images.bag} style={homeStyles.productImg} />
+                                            <Image source={product.image ? {uri: product.image} : images.bag} style={homeStyles.productImg} />
                                             <Text style={homeStyles.productName}>{product.name}</Text>
                                         </View>
                                         <Text style={homeStyles.productPrice}>₦ {product.price}</Text>
