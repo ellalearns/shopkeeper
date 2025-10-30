@@ -52,14 +52,6 @@ export default function _Layout() {
             />
 
             <Tabs.Screen
-                name="categories"
-                options={{
-                    title: "Categories",
-                    tabBarIcon: ({ focused }) => <TabIcon focused={focused} activeIcon={images.activeCategory} icon={images.category} />
-                }}
-            />
-
-            <Tabs.Screen
                 name="user"
                 options={{
                     title: "User",
