@@ -19,7 +19,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.ellangoziagu.shopkeeper"
     },
     "web": {
       "output": "static",
@@ -39,20 +40,28 @@
           }
         }
       ],
-      ["expo-sqlite",
-      {
-        "enableFTS": true,
-        "useSQLCipher": true,
-        "ios": {
-          "customBuildFlags": [
-            "-DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_SNAPSHOT=1"
-          ]
+      [
+        "expo-sqlite",
+        {
+          "enableFTS": true,
+          "useSQLCipher": true,
+          "ios": {
+            "customBuildFlags": [
+              "-DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_SNAPSHOT=1"
+            ]
+          }
         }
-      }
-    ]],
+      ]
+    ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "924ffb64-6903-4141-acc5-93bedc1b6541"
+      }
     }
   }
 }

@@ -88,13 +88,13 @@ export default function Add() {
                     <Input label="Product Name" value={name} setValue={setName} editable />
                     <View style={addStyles.priceV}>
                         <View style={addStyles.subPriceV}>
-                            <Input label={`Price (₦)`} numeric value={price} setValue={setPrice} />
+                            <Input label={`Price (₦)`} numeric value={price} setValue={setPrice} editable />
                         </View>
                         <View style={addStyles.subPriceV}>
-                            <Input label="Units / Quantity" numeric value={units} setValue={setUnits} />
+                            <Input label="Units / Quantity" numeric value={units} setValue={setUnits} editable />
                         </View>
                     </View>
-                    <Input label="Product Description" desc value={desc} setValue={setDesc} />
+                    <Input label="Product Description" desc value={desc} setValue={setDesc} editable />
                 </View>
                 <View>
                     <TouchableOpacity onPress={() => addAProduct()} disabled={canContinue} style={[addStyles.finishB, canContinue && addStyles.disabled]}>
