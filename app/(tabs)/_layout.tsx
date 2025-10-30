@@ -9,9 +9,10 @@ const TabIcon = ({ focused, activeIcon, icon }: any) => {
             alignItems: "center",
             justifyContent: "center",
             alignSelf: "center",
-            height: "120%",
-            borderRadius: 40
-        }, focused && {backgroundColor: "#dfc87c", elevation: 5, zIndex: 5}]}>
+            height: "150%",
+            borderRadius: 40,
+            marginTop: 5
+        }, focused && {backgroundColor: "#dfc87c"}]}>
             <Image source={focused ? activeIcon : icon} style={focused ? null : null} />
         </View>
     )
@@ -24,14 +25,16 @@ export default function _Layout() {
                 headerShown: false,
                 tabBarShowLabel: false,
                 tabBarStyle: {
-                    backgroundColor: "transparent",
-                    marginHorizontal: 25,
+                    backgroundColor: "rgba(231, 228, 209, 0.8)",
+                    marginHorizontal: 40,
                     position: "absolute",
                     bottom: 20,
                     elevation: 0,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderTopWidth: 0
+                    justifyContent: "flex-start",
+                    borderTopWidth: 0,
+                    borderRadius: 20,
+                    height: "5%",
+                    paddingHorizontal: 0
                 }
             }}>
 
@@ -48,14 +51,6 @@ export default function _Layout() {
                 options={{
                     title: "Add",
                     tabBarIcon: ({ focused }) => <TabIcon focused={focused} activeIcon={images.activePlus} icon={images.plus} />
-                }}
-            />
-
-            <Tabs.Screen
-                name="user"
-                options={{
-                    title: "User",
-                    tabBarIcon: ({ focused }) => <TabIcon focused={focused} activeIcon={images.activeUser} icon={images.user} />
                 }}
             />
         </Tabs>
