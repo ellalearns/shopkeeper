@@ -16,7 +16,8 @@ export default function Index() {
   useEffect(() => {
     setTimeout(() => {
       if (fontsLoaded) {
-        router.replace("/(tabs)/home")
+        // router.replace("/(tabs)/home")
+        router.replace("/(tabs)/add")
       }
 
       if (!fontsLoaded) return null

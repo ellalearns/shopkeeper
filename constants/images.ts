@@ -10,5 +10,7 @@ export const images = {
     category: require("../assets/images/category.png"),
     activeCategory: require("../assets/images/activeCategory.png"),
     search: require("../assets/images/search.png"),
-    bag: require("../assets/images/bag.png")
+    bag: require("../assets/images/bag.png"),
+    down: require("../assets/images/down.png"),
+    up: require("../assets/images/up.png")
 }
