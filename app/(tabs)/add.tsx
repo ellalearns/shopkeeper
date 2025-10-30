@@ -45,9 +45,6 @@ export default function Add() {
                         <View style={addStyles.subPriceV}>
                             <Input label="Units / Quantity" numeric value={units} setValue={setUnits} />
                         </View>
-                        <View style={addStyles.subPriceV}>
-                            <Input label="Category" value="default" editable={false} setValue={() => null} />
-                        </View>
                     </View>
                     <Input label="Product Description" desc value={desc} setValue={setDesc} />
                 </View>

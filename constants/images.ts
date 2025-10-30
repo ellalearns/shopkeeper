@@ -12,5 +12,6 @@ export const images = {
     search: require("../assets/images/search.png"),
     bag: require("../assets/images/bag.png"),
     down: require("../assets/images/down.png"),
-    up: require("../assets/images/up.png")
+    up: require("../assets/images/up.png"),
+    left: require("../assets/images/left.png")
 }

@@ -27,9 +27,9 @@ export default function Input({ label, numeric, desc, value, setValue, editable 
                     multiline={desc ? true : false}
                     editable={editable} />
 
-                {
+                {/* {
                     editable === false ? <TouchableOpacity><Image source={images.down} /></TouchableOpacity> : null
-                }
+                } */}
             </View>
         </View>
     )

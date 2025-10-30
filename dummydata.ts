@@ -3,14 +3,12 @@
 export const dummyProducts = [
     {
         "name": "paintbrush",
-        "category": "default",
         "price": 140,
         "units": 100,
         "description": "paint your house"
     },
     {
         "name": "towel",
-        "category": "bath",
         "price": 1330,
         "units": 134,
         "description": "dry skin"

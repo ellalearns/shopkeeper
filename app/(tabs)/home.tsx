@@ -2,6 +2,7 @@ import { images } from "@/constants/images";
 import { dummyProducts } from "@/dummydata";
 import { globalStyles } from "@/styles";
 import { homeStyles } from "@/styles/home";
+import { router } from "expo-router";
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
@@ -31,13 +32,17 @@ export default function Home() {
                         {
                             dummyProducts.map((item, idx) => {
                                 return (
-                                    <TouchableOpacity key={idx} style={homeStyles.productV}>
+                                    <TouchableOpacity key={idx} style={homeStyles.productV} onPress={() => router.push({
+                                        pathname: "/product/[id]",
+                                        params: {
+                                            data: JSON.stringify(item)
+                                        }
+                                    })}>
                                         <View style={homeStyles.nameV}>
                                             <Image source={images.bag} style={homeStyles.productImg} />
                                             <Text style={homeStyles.productName}>{item.name}</Text>
                                         </View>
                                         <Text style={homeStyles.productPrice}>₦ {item.price}</Text>
-                                        <Text style={homeStyles.floatingT}>{item.category}</Text>
                                         <Text style={homeStyles.floatingBottomT}>{item.units} {item.units <= 1 ? "unit" : "units"}</Text>
                                     </TouchableOpacity>
                                 )
