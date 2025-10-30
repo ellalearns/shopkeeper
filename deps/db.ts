@@ -39,6 +39,17 @@ export const getAllProducts = async () => {
     return products
 }
 
+export const getOneProduct = async (id: string) => {
+    const db = await getDB()
+
+    const productDetails = await db.getFirstAsync(
+        `SELECT * FROM PRODUCTS WHERE id = ?`,
+        [id]
+    )
+
+    return productDetails
+}
+
 export const addNewProduct = async ({ ...product }) => {
     
     const id = Crypto.randomUUID()
