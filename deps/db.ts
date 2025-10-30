@@ -91,4 +91,11 @@ export const editProduct = async ({ ...product }) => {
     )
 }
 
+export const deleteProduct = async(id: string) => {
+    const db = await getDB()
 
+    await db.runAsync(
+        `DELETE FROM PRODUCTS WHERE id = ?`,
+        [id]
+    )
+}

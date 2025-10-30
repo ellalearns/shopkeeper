@@ -6,7 +6,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { productStyles } from "@/styles/product";
 import Input from "@/components/input";
 import { useCallback, useEffect, useState } from "react";
-import { editProduct, getOneProduct } from "@/deps/db";
+import { deleteProduct, editProduct, getOneProduct } from "@/deps/db";
 
 export default function Product() {
 
@@ -29,6 +29,11 @@ export default function Product() {
 
     const onClickSave = async () => {
         await editProduct({ name, price, units, description, id })
+    }
+
+    const onClickDelete = async () => {
+        await deleteProduct(id.toString())
+        router.push("/(tabs)/home")
     }
 
     useEffect(() => {
@@ -86,7 +91,7 @@ export default function Product() {
                     }} style={productStyles.button}>
                         <Text style={productStyles.buttonT}>{editText}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={productStyles.button}>
+                    <TouchableOpacity onPress={async () => onClickDelete()} style={productStyles.button}>
                         <Text style={productStyles.buttonT}>Delete</Text>
                     </TouchableOpacity>
                 </View>
