@@ -1,13 +1,27 @@
 import { images } from "@/constants/images";
+import { getAllProducts } from "@/deps/db";
 import { dummyProducts } from "@/dummydata";
 import { globalStyles } from "@/styles";
 import { homeStyles } from "@/styles/home";
 import { router } from "expo-router";
+import { useEffect, useState } from "react";
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 
 export default function Home() {
+
+    const [products, setProducts] = useState<any>(null)
+
+    useEffect(() => {
+        const getProducts = async () => {
+            const products = await getAllProducts()
+            setProducts(products)
+        }
+
+        getProducts()
+    }, [])
+
     return (
         <SafeAreaProvider>
             <SafeAreaView style={[globalStyles.main, { padding: 24 }]}>
@@ -30,20 +44,20 @@ export default function Home() {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={homeStyles.scrollV}>
                         {
-                            dummyProducts.map((item, idx) => {
+                            products?.map((product : any, idx : any) => {
                                 return (
                                     <TouchableOpacity key={idx} style={homeStyles.productV} onPress={() => router.push({
                                         pathname: "/product/[id]",
                                         params: {
-                                            data: JSON.stringify(item)
+                                            id: product.id
                                         }
                                     })}>
                                         <View style={homeStyles.nameV}>
-                                            <Image source={images.bag} style={homeStyles.productImg} />
-                                            <Text style={homeStyles.productName}>{item.name}</Text>
+                                            <Image source={product.image ? product.image : images.bag} style={homeStyles.productImg} />
+                                            <Text style={homeStyles.productName}>{product.name}</Text>
                                         </View>
-                                        <Text style={homeStyles.productPrice}>₦ {item.price}</Text>
-                                        <Text style={homeStyles.floatingBottomT}>{item.units} {item.units <= 1 ? "unit" : "units"}</Text>
+                                        <Text style={homeStyles.productPrice}>₦ {product.price}</Text>
+                                        <Text style={homeStyles.floatingBottomT}>{product.units} {Number(product.units) <= 1 ? "unit" : "units"}</Text>
                                     </TouchableOpacity>
                                 )
                             })

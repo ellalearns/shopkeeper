@@ -27,3 +27,11 @@ export const createProductTable = async () => {
         )
     `)
 }
+
+export const getAllProducts = async () => {
+    const db = await getDB()
+
+    await db.getAllAsync(
+        `SELECT * FROM PRODUCTS ORDER BY created_at DESC`
+    )
+}
