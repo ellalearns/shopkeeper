@@ -23,7 +23,9 @@ export default function Add() {
     const [canContinue, setCanContinue] = useState(true)
 
     useEffect(() => {
-        name && price && units && desc && setCanContinue(false)
+        if (name && price && units && desc) setCanContinue(false)
+        else setCanContinue(true)
+
     }, [name, price, units, desc])
 
     useFocusEffect(useCallback(() => {
@@ -56,12 +58,12 @@ export default function Add() {
             units: units,
             price: price,
             description: desc,
-            image: image
+            image: image?.uri ?? null
         }
 
         await addNewProduct(productData)
 
-        router.replace("/home")
+        router.push("/home")
     }
 
     return (
