@@ -22,7 +22,7 @@ export default function Input({ label, numeric, desc, value, setValue, editable 
                     onChangeText={(text) => {
                         setValue(text)
                     }}
-                    style={[inputStyles.txt, desc && inputStyles.desc]}
+                    style={[inputStyles.txt, desc && inputStyles.desc, !editable && inputStyles.editableBox]}
                     keyboardType={numeric ? "numeric" : "default"}
                     multiline={desc ? true : false}
                     editable={editable} />

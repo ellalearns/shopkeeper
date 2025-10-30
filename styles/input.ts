@@ -21,10 +21,11 @@ export const inputStyles = StyleSheet.create({
     },
 
     txt: {
-        width: "80%",
+        width: "103%",
         fontFamily: fonts.regular,
         fontSize: 18,
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        borderRadius: 10
     },
 
     label: {
@@ -36,5 +37,9 @@ export const inputStyles = StyleSheet.create({
         height: 100,
         wordWrap: "wrap",
         flexWrap: "wrap"
+    },
+
+    editableBox: {
+        backgroundColor: "rgba(231, 228, 209, 0.8)"
     }
 })

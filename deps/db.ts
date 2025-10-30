@@ -51,7 +51,7 @@ export const getOneProduct = async (id: string) => {
 }
 
 export const addNewProduct = async ({ ...product }) => {
-    
+
     const id = Crypto.randomUUID()
     const image = product.image ?? null
 
@@ -71,4 +71,24 @@ export const addNewProduct = async ({ ...product }) => {
         ]
     )
 }
+
+
+export const editProduct = async ({ ...product }) => {
+
+    const db = await getDB()
+
+    await db.runAsync(
+        `UPDATE PRODUCTS SET
+            name = ?, price = ?, units = ?, description = ?, modified_at = datetime('now')
+        WHERE id = ?`,
+        [
+            product.name,
+            product.price,
+            product.units,
+            product.description,
+            product.id
+        ]
+    )
+}
+
 

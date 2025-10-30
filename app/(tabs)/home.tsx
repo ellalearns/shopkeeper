@@ -1,10 +1,9 @@
 import { images } from "@/constants/images";
 import { getAllProducts } from "@/deps/db";
-import { dummyProducts } from "@/dummydata";
 import { globalStyles } from "@/styles";
 import { homeStyles } from "@/styles/home";
 import { router, useFocusEffect } from "expo-router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
@@ -32,7 +31,8 @@ export default function Home() {
                         <Image source={images.search} />
                         <TextInput
                             placeholder=" search"
-                            style={homeStyles.inputtxt} />
+                            style={homeStyles.inputtxt}
+                            editable={false} />
                     </View>
                 </View>
 
