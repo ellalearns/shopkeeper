@@ -6,6 +6,7 @@ import { homeStyles } from "@/styles/home";
 import { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import * as ImagePicker from "expo-image-picker"
 
 
 export default function Add() {
@@ -16,7 +17,21 @@ export default function Add() {
     const [desc, setDesc] = useState("")
 
     const category = "default"
-    let image = null
+    const [ image, setImage ] = useState<any>(null)
+
+    const takePicture = async () => {
+
+        const picture = await ImagePicker.launchCameraAsync({
+            mediaTypes: [ "images" ],
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1
+        })
+
+        if (!picture.canceled) {
+            setImage({ uri: picture.assets[0].uri })
+        }
+    }
 
     return (
         <SafeAreaProvider>
@@ -26,10 +41,10 @@ export default function Add() {
                 </View>
                 <View>
                     <View>
-                        <TouchableOpacity style={addStyles.uploadImg}>
+                        <TouchableOpacity style={addStyles.uploadImg} onPress={takePicture}>
                             {
                                 image ? <>
-                                    <Image source={image} style={addStyles.img}/>
+                                    <Image source={image} style={[addStyles.img]}/>
                                 </> : <>
                                     <Image source={images.bag} />
                                     <Text style={addStyles.imgT}>add a product image</Text>

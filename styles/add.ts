@@ -19,7 +19,6 @@ export const addStyles = StyleSheet.create({
     },
 
     uploadImg: {
-        // backgroundColor: "pink",
         width: 155,
         height: 155,
         justifyContent: "center",
@@ -34,7 +33,8 @@ export const addStyles = StyleSheet.create({
     img: {
         resizeMode: "cover",
         width: "100%",
-        height: "100%"
+        height: "100%",
+        borderRadius: 155
     },
 
     finishB: {
