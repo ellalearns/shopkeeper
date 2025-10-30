@@ -4,6 +4,7 @@ import { Image, ImageBackground, Text, View } from "react-native";
 import { useFonts, Figtree_300Light, Figtree_400Regular, Figtree_600SemiBold } from "@expo-google-fonts/figtree"
 import { useEffect } from "react";
 import { router } from "expo-router";
+import { createProductTable } from "@/deps/db";
 
 export default function Index() {
 
@@ -14,14 +15,19 @@ export default function Index() {
   })
 
   useEffect(() => {
-    setTimeout(() => {
-      if (fontsLoaded) {
-        // router.replace("/(tabs)/home")
-        router.replace("/(tabs)/add")
-      }
+    
+    const loadProductTable = async () => {
+      await createProductTable()
+    }
 
-      if (!fontsLoaded) return null
-    }, 3000)
+    loadProductTable()
+
+    setTimeout(() => {
+        if (fontsLoaded) {
+          router.replace("/(tabs)/home")
+        }
+      }, 2000)
+
   }, [fontsLoaded])
 
   return (
