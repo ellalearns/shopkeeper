@@ -23,7 +23,7 @@ https://github.com/ellalearns/shopkeeper.git
 
 
 Appetize Link:
-https://appetize.io/app/android/com.ellangoziagu.shopkeeper?device=pixel9xl&osVersion=15.0
+[https://appetize.io/embed/b_odtqflhvqmgp2kdvle7wtrxco4](https://appetize.io/embed/b_odtqflhvqmgp2kdvle7wtrxco4)
 
 Demo Video Link:
 https://drive.google.com/drive/folders/1_HAkGgPiV3bPxC6Jhj8NIKlO8XiOHV3y 
